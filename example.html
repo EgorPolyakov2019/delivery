@@ -1,0 +1,614 @@
+<html>
+	<head>
+		<title>Доставка в регионы России</title>
+		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+		<link rel="stylesheet" href="css/delivery.css">
+	</head>
+	<body>
+		
+		<a href="#delivery" class="delivery">
+			<h2>Доставка в регионы России</h2>
+			<p>Выберите Ваш город для уточнения сроков и стоимости доставки выбранных товаров по России.</p>
+		</a>
+		
+		<!-- Окно "Доставка в регионы России" -->
+
+		<div id="delivery">
+			<div class="popup">
+				<a href="" class="close" onclick="this.parentNode.style.display='none'"></a>
+				<div class="header">
+					<h2>Доставка <span class="hidden">комплектующих для&nbsp;АЗС </span>по России</h2>
+				</div>
+				<div class="deliveryChoice">
+					<div class="regions dialogLocation">
+						<div class="deliveryMessage" id="deliveryAnswer">
+							<a href="#" onclick="lookIt('deliveryAnswer');return false;" class="subClose"></a>
+							<div class="subHeader">
+								<h3>Уточнение местоположения</h3>
+							</div>
+							<p>Куда необходимо доставить Ваш заказ комплектующих для ТРК и АЗС?</p>
+							<a href="" onclick="lookLocation('SPb');return false;" class="choosePoint" title="Доставка заказа в Санкт-Петербург">Санкт-Петербург</a>
+							<a href="" onclick="lookLocation('LO');return false;" class="choosePoint" title="Доставка заказа в Ленинградскую область">Лен<span class="hidden">инградская </span>область</a>
+							<a href="" onclick="lookLocationRF('Russia');return false;" class="choosePoint">Регионы России</a>
+						</div>
+					</div>
+					<script>
+						var dialog;	 
+						function lookLocation(SPb)
+						{
+							param=document.getElementById(SPb);
+							if(param.style.display == "none")
+						{
+							if(dialog) dialog.style.display = "none";
+							param.style.display = "block";
+							dialog = param;
+						}
+							else param.style.display = "none";
+						}
+					</script>
+					<div class="regions" id="SPb" style="display:none;">
+							<a href="" onclick="lookLocation('SPb');return false;" class="subClose mainElement"></a>
+							<h3>Выбор района в СПб</h3>
+							<script>
+								$(function () {
+									$("input#searchMetro").on("input", function () {
+										var str = $(this).val().toLowerCase();
+										if (str.length <= 2) {
+											$("ul#searchMetro li").show();
+										} else {
+											$("ul#searchMetro li").each(function () {
+												if ($(this).text().toLowerCase().indexOf(str) < 0) {
+													$(this).hide();
+												}
+											});
+										}
+									});
+								});
+							</script>
+							<script>
+								var hideMessage;	 
+								function lookIt(deliveryAnswer)
+								{
+								param=document.getElementById(deliveryAnswer);
+								if(param.style.display == "none")
+								{
+								if(hideMessage) hideMessage.style.display = "none";
+								param.style.display = "block";
+								hideMessage = param;
+								}
+								else param.style.display = "none";
+								}
+							</script>
+							<input id="searchMetro" value="" placeholder="Поиск по району и метро" size="20">
+							<div class="deliveryMessage" id="deliveryDialogAnswer" style="display:none">
+								<a href="#" onclick="lookIt('deliveryDialogAnswer');return false;" class="subClose"></a>
+								<div class="subHeader">
+									<h3>Условия доставки по СПб</h3>
+								</div>
+								<p class="result"><small>Стоимость доставки:</small> <b>от&nbsp;300&nbsp;р.</b></p>
+								<p>При заказе комплектующих для ТРК и АЗС по будням до 17:00 доставка по Санкт-Петербургу в район <span id="metro"></span> выполняется на следующий день с 11:00 до 20:00 (кроме праздников и выходных).</p>
+								<p>Вы можете выбрать удобное для Вас время при согласовании заказа с менеджером компании «Нева-Трейд».</p>
+								<p>Указана стоимость доставки для заказов комплектующих весом до&nbsp;1&nbsp;кг.</p>
+								<p class="buttons">
+									<a href="/about/order/index.php" class="orderButton">Оформить заказ</a>
+									<a href="#" class="backButton">Закрыть</a>
+								</p>
+							</div>
+							<ul id="searchMetro">
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Девяткино</b><small>Всеволожский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Гражданский проспект</b><small>Калининский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Академическая</b><small>Калининский район</small></a></li> 
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Политехническая</b><small>Калининский район</small></a></li> 
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Площадь Мужества</b><small>Калининский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Лесная</b><small>Выборгский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Выборгская</b><small>Выборгский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Площадь Ленина</b><small>Калининский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Чернышевская</b><small>Центральный район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Площадь Восстания</b><small>Центральный район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Владимирская</b><small>Центральный район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Пушкинская</b><small>Адмиралтейский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Технологический институт</b><small>Адмиралтейский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Балтийская</b><small>Адмиралтейский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Нарвская</b><small>Кировский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Кировский завод</b><small>Кировский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Автово</b><small>Кировский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Ленинский проспект</b><small>Кировский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="red"><b>Проспект Ветеранов</b><small>Кировский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Парнас</b><small>Выборгский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Проспект Просвещения</b><small>Выборгский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Озерки</b><small>Выборгский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Удельная</b><small>Выборгский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Пионерская</b><small>Приморский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Чёрная речка</b><small>Приморский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Петроградская</b><small>Петроградский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Горьковская</b><small>Петроградский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Невский проспект</b><small>Центральный район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Сенная площадь</b><small>Центральный район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue" style="display:none"><b>Площадь Мира</b><small>Адмиралтейский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Технологический институт</b><small>Адмиралтейский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Фрунзенская</b><small>Адмиралтейский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Московские ворота</b><small>Московский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Электросила</b><small>Московский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Парк Победы</b><small>Московский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Звёздная</b><small>Московский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="blue"><b>Купчино</b><small>Фрунзенский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="green"><b>Беговая</b><small>Приморский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="green"><b>Зенит</b><small>Петроградский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="green"><b>Приморская</b><small>Василеостровский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="green"><b>Василеостровская</b><small>Василеостровский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="green"><b>Гостиный двор</b><small>Центральный район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="green"><b>Маяковская</b><small>Центральный район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="green"><b>Площадь Александра Невского</b><small>Центральный район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="green"><b>Елизаровская</b><small>Невский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="green"><b>Ломоносовская</b><small>Невский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="green"><b>Пролетарская</b><small>Невский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="green"><b>Обухово</b><small>Невский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="green"><b>Рыбацкое</b><small>Невский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="orange"><b>Спасская</b><small>Невский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="orange"><b>Достоевская</b><small>Центральный район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="orange"><b>Лиговский проспект</b><small>Центральный район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="orange"><b>Новочеркасская</b><small>Красногвардейский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="orange"><b>Ладожская</b><small>Красногвардейский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="orange"><b>Проспект Большевиков</b><small>Невский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="orange"><b>Улица Дыбенко</b><small>Невский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Комендантский проспект</b><small>Приморский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Старая Деревня</b><small>Приморский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Крестовский остров</b><small>Петроградский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Чкаловская</b><small>Петроградский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Спортивная</b><small>Петроградский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Адмиралтейская</b><small>Центральный район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Садовая</b><small>Адмиралтейский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Звенигородская</b><small>Адмиралтейский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Обводный канал</b><small>Фрунзенский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Волковская</b><small>Фрунзенский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Бухарестская</b><small>Фрунзенский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Международная</b><small>Фрунзенский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Проспект Славы</b><small>Фрунзенский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Дунайская</b><small>Фрунзенский район</small></a></li>
+							  <li class="select"><a href="#" onclick="look('deliveryDialogAnswer');return false;" class="violet"><b>Шушары</b><small>Пушкинский район</small></a></li>
+							</ul>
+							<script>
+								var show;	 
+								function look(deliveryAnswer)
+								{
+								param=document.getElementById(deliveryAnswer);
+								if(param.style.display == "none")
+								{
+								if(show) show.style.display = "none";
+								param.style.display = "block";
+								show = param;
+								}
+								else param.style.display = "none";
+								}
+							</script>
+							<script>
+								var select = document.querySelectorAll('li.select');
+								var metro = document.getElementById("metro");
+								select[0].onclick = function() {metro.innerHTML = 'метро Девяткино';}
+								select[1].onclick = function() {metro.innerHTML = 'метро Гражданский проспект';}
+								select[2].onclick = function() {metro.innerHTML = 'метро Академическая';}
+								select[3].onclick = function() {metro.innerHTML = 'метро Политехническая';}
+								select[4].onclick = function() {metro.innerHTML = 'метро Площадь Мужества';}
+								select[5].onclick = function() {metro.innerHTML = 'метро Лесная';}
+								select[6].onclick = function() {metro.innerHTML = 'метро Выборгская';}
+								select[7].onclick = function() {metro.innerHTML = 'метро Площадь Ленина';}
+								select[8].onclick = function() {metro.innerHTML = 'метро Чернышевская';}
+								select[9].onclick = function() {metro.innerHTML = 'метро Площадь Восстания';}
+								select[10].onclick = function() {metro.innerHTML = 'метро Владимирская';}
+								select[11].onclick = function() {metro.innerHTML = 'метро Пушкинская';}
+								select[12].onclick = function() {metro.innerHTML = 'метро Технологический институт';}
+								select[13].onclick = function() {metro.innerHTML = 'метро Балтийская';}
+								select[14].onclick = function() {metro.innerHTML = 'метро Нарвская';}
+								select[15].onclick = function() {metro.innerHTML = 'метро Кировский завод';}
+								select[16].onclick = function() {metro.innerHTML = 'метро Автово';}
+								select[17].onclick = function() {metro.innerHTML = 'метро Ленинский проспект';}
+								select[18].onclick = function() {metro.innerHTML = 'метро Проспект Ветеранов';}
+								select[19].onclick = function() {metro.innerHTML = 'метро Парнас';}
+								select[20].onclick = function() {metro.innerHTML = 'метро Проспект Просвещения';}
+								select[21].onclick = function() {metro.innerHTML = 'метро Озерки';}
+								select[22].onclick = function() {metro.innerHTML = 'метро Удельная';}
+								select[23].onclick = function() {metro.innerHTML = 'метро Пионерская';}
+								select[24].onclick = function() {metro.innerHTML = 'метро Чёрная речка';}
+								select[25].onclick = function() {metro.innerHTML = 'метро Петроградская';}
+								select[26].onclick = function() {metro.innerHTML = 'метро Горьковская';}
+								select[27].onclick = function() {metro.innerHTML = 'метро Невский проспект';}
+								select[28].onclick = function() {metro.innerHTML = 'метро Сенная площадь';}
+								select[29].onclick = function() {metro.innerHTML = 'метро Площадь Мира';}
+								select[30].onclick = function() {metro.innerHTML = 'метро Технологический институт';}
+								select[31].onclick = function() {metro.innerHTML = 'метро Фрунзенская';}
+								select[32].onclick = function() {metro.innerHTML = 'метро Московские ворота';}
+								select[33].onclick = function() {metro.innerHTML = 'метро Электросила';}
+								select[34].onclick = function() {metro.innerHTML = 'метро Парк Победы';}
+								select[35].onclick = function() {metro.innerHTML = 'метро Звёздная';}
+								select[36].onclick = function() {metro.innerHTML = 'метро Купчино';}
+								select[37].onclick = function() {metro.innerHTML = 'метро Беговая';}
+								select[38].onclick = function() {metro.innerHTML = 'метро Зенит';}
+								select[39].onclick = function() {metro.innerHTML = 'метро Приморская';}
+								select[40].onclick = function() {metro.innerHTML = 'метро Василеостровская';}
+								select[41].onclick = function() {metro.innerHTML = 'метро Гостиный двор';}
+								select[42].onclick = function() {metro.innerHTML = 'метро Маяковская';}
+								select[43].onclick = function() {metro.innerHTML = 'метро Площадь Александра Невского';}
+								select[44].onclick = function() {metro.innerHTML = 'метро Елизаровская';}
+								select[45].onclick = function() {metro.innerHTML = 'метро Ломоносовская';}
+								select[46].onclick = function() {metro.innerHTML = 'метро Пролетарская';}
+								select[47].onclick = function() {metro.innerHTML = 'метро Обухово';}
+								select[48].onclick = function() {metro.innerHTML = 'метро Рыбацкое';}
+								select[49].onclick = function() {metro.innerHTML = 'метро Спасская';}
+								select[50].onclick = function() {metro.innerHTML = 'метро Достоевская';}
+								select[51].onclick = function() {metro.innerHTML = 'метро Лиговский проспект';}
+								select[52].onclick = function() {metro.innerHTML = 'метро Новочеркасская';}
+								select[53].onclick = function() {metro.innerHTML = 'метро Ладожская';}
+								select[54].onclick = function() {metro.innerHTML = 'метро Проспект Большевиков';}
+								select[55].onclick = function() {metro.innerHTML = 'метро Улица Дыбенко';}
+								select[56].onclick = function() {metro.innerHTML = 'метро Комендантский проспект';}
+								select[57].onclick = function() {metro.innerHTML = 'метро Старая Деревня';}
+								select[58].onclick = function() {metro.innerHTML = 'метро Крестовский остров';}
+								select[59].onclick = function() {metro.innerHTML = 'метро Чкаловская';}
+								select[60].onclick = function() {metro.innerHTML = 'метро Спортивная';}
+								select[61].onclick = function() {metro.innerHTML = 'метро Адмиралтейская';}
+								select[62].onclick = function() {metro.innerHTML = 'метро Садовая';}
+								select[63].onclick = function() {metro.innerHTML = 'метро Звенигородская';}
+								select[64].onclick = function() {metro.innerHTML = 'метро Обводный канал';}
+								select[65].onclick = function() {metro.innerHTML = 'метро Волковская';}
+								select[66].onclick = function() {metro.innerHTML = 'метро Бухарестская';}
+								select[67].onclick = function() {metro.innerHTML = 'метро Международная';}
+								select[68].onclick = function() {metro.innerHTML = 'метро Проспект Славы';}
+								select[69].onclick = function() {metro.innerHTML = 'метро Дунайская';}
+								select[70].onclick = function() {metro.innerHTML = 'метро Шушары';}
+							</script>
+							<p class="info">Ориентировочные сроки доставки заказов по&nbsp;районам Санкт-Петербурга.</p>
+						</div>
+						<div class="regions" id="LO" style="display:none">
+							<a href="" onclick="lookLocation('LO');return false;" class="subClose mainElement"></a>
+							<h3>Выбор города в Ленобласти</h3>
+							<script>
+								$(function () {
+									$("input#searchRegionCity").on("input", function () {
+										var str = $(this).val().toLowerCase();
+										if (str.length <= 2) {
+											$("ul#searchRegionCity li").show();
+										} else {
+											$("ul#searchRegionCity li").each(function () {
+												if ($(this).text().toLowerCase().indexOf(str) < 0) {
+													$(this).hide();
+												}
+											});
+										}
+									});
+								});
+							</script>
+							<script>
+								var hideMessageToo;	 
+								function lookItToo(deliveryDialogAnswer)
+								{
+								param=document.getElementById(deliveryDialogAnswer);
+								if(param.style.display == "none")
+								{
+								if(hideMessageToo) hideMessageToo.style.display = "none";
+								param.style.display = "block";
+								hideMessageToo = param;
+								}
+								else param.style.display = "none";
+								}
+							</script>
+							<input id="searchRegionCity" value="" placeholder="Поиск по городам области" size="20">
+							<div class="deliveryMessage" id="deliveryDialogAnswerToo" style="display:none">
+								<a href="#" onclick="lookIt('deliveryDialogAnswerToo');return false;" class="subClose"></a>
+								<div class="subHeader">
+									<h3>Условия доставки по&nbsp;Лен<span class="hidden">инградской </span>области</h3>
+								</div>
+								<p>При заказе комплектующих для&nbsp;ТРК и АЗС по&nbsp;будням до&nbsp;17:00 доставка по&nbsp;Ленинградской области в&nbsp;<span id="regionCity"></span> осуществляется на следующий день с 11:00 до 20:00 (кроме праздников и выходных).</p>
+								<p>Вы можете выбрать удобное для&nbsp;Вас время при&nbsp;согласовании заказа с&nbsp;менеджером компании «Нева-Трейд».</p>
+								<p>Указана стоимость доставки для заказов весом до&nbsp;1&nbsp;кг.</p>
+								<p class="buttons">
+									<a href="/about/order/index.php" class="orderButton">Оформить заказ</a>
+									<a href="#" class="backButton">Закрыть</a>
+								</p>
+							</div>
+							<ul id="searchRegionCity">
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Бокситогорск</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Волосово</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Волхов</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Всеволожск</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Выборг</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Вырица</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Гатчина</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Ефимовский</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Ивангород</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Кингисепп</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Кириши</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Кировск</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Коммунар</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Лодейное Поле</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Ломоносов</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Луга</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Новая Ладога</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Новое Девяткино</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Отрадное</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Пикалёво</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Подпорожье</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Приозерск</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Рощино</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Светогорск</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Сертолово</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Сиверский</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Сланцы</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Сосновый бор</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Сясьстрой</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Тихвин</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Тосно</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Ульяновка</b></a></li>
+							  <li class="selectCity"><a href="#" onclick="lookItToo('deliveryDialogAnswerToo');return false;"><b>Шлиссельбург</b></a></li>
+							</ul>
+							<script>
+								var showToo;	 
+								function lookItToo(deliveryDialogAnswer)
+								{
+								param=document.getElementById(deliveryDialogAnswer);
+								if(param.style.display == "none")
+								{
+								if(showToo) showToo.style.display = "none";
+								param.style.display = "block";
+								showToo = param;
+								}
+								else param.style.display = "none";
+								}
+							</script>
+							<script>
+								var select = document.querySelectorAll('li.selectCity');
+								var regionCity = document.getElementById("regionCity");
+								select[0].onclick = function() {regionCity.innerHTML = 'Бокситогорск от	7200р.';}
+								select[1].onclick = function() {regionCity.innerHTML = 'Волосово от	2730р.';}
+								select[2].onclick = function() {regionCity.innerHTML = 'Волхов от 3600р.';}
+								select[3].onclick = function() {regionCity.innerHTML = 'Всеволожск от 870р.';}
+								select[4].onclick = function() {regionCity.innerHTML = 'Выборг от 4500р.';}
+								select[5].onclick = function() {regionCity.innerHTML = 'Вырица от 2190р.';}
+								select[6].onclick = function() {regionCity.innerHTML = 'Гатчина	от 1500р.';}
+								select[7].onclick = function() {regionCity.innerHTML = 'Ефимовский от 8700р.';}
+								select[8].onclick = function() {regionCity.innerHTML = 'Ивангород от 4800р.';}
+								select[9].onclick = function() {regionCity.innerHTML = 'Кингисепп от 4200р.';}
+								select[10].onclick = function() {regionCity.innerHTML = 'Кириши от 5100р.';}
+								select[11].onclick = function() {regionCity.innerHTML = 'Кировск от 1140р.';}
+								select[12].onclick = function() {regionCity.innerHTML = 'Коммунар от 1650р.';}
+								select[13].onclick = function() {regionCity.innerHTML = 'Лодейное Поле от 6600р.';}
+								select[14].onclick = function() {regionCity.innerHTML = 'Ломоносов от 1800р.';}
+								select[15].onclick = function() {regionCity.innerHTML = 'Луга от 4500р.';}
+								select[16].onclick = function() {regionCity.innerHTML = 'Новая Ладога от 3600р.';}
+								select[17].onclick = function() {regionCity.innerHTML = 'Новое Девяткино от 1170р.';}
+								select[18].onclick = function() {regionCity.innerHTML = 'Отрадное от 1680р.';}
+								select[19].onclick = function() {regionCity.innerHTML = 'Пикалёво от 7500р.';}
+								select[20].onclick = function() {regionCity.innerHTML = 'Подпорожье от 7800р.';}
+								select[21].onclick = function() {regionCity.innerHTML = 'Приозерск от 4800р.';}
+								select[22].onclick = function() {regionCity.innerHTML = 'Рощино от 2760р.';}
+								select[23].onclick = function() {regionCity.innerHTML = 'Светогорск от 6300р.';}
+								select[24].onclick = function() {regionCity.innerHTML = 'Сертолово от 1350р.';}
+								select[25].onclick = function() {regionCity.innerHTML = 'Сиверский от 2520р.';}
+								select[26].onclick = function() {regionCity.innerHTML = 'Сланцы от 6000р.';}
+								select[27].onclick = function() {regionCity.innerHTML = 'Сосновый бор от 3300р.';}
+								select[28].onclick = function() {regionCity.innerHTML = 'Сясьстрой от 3900р.';}
+								select[29].onclick = function() {regionCity.innerHTML = 'Тихвин от 6300р.';}
+								select[30].onclick = function() {regionCity.innerHTML = 'Тосно от 2070р.';}
+								select[31].onclick = function() {regionCity.innerHTML = 'Ульяновка от 1470р.';}
+								select[32].onclick = function() {regionCity.innerHTML = 'Шлиссельбург от 1170р.';}
+							</script>
+							<p class="info">Ориентировочные сроки поставки комплектующих по&nbsp;Лен.области.</p>
+						</div>
+						<script>
+							var dialogRF;	 
+							function lookLocationRF(Russia)
+							{
+							param=document.getElementById(Russia);
+							if(param.style.display == "none")
+							{
+							if(dialogRF) dialogRF.style.display = "none";
+							param.style.display = "block";
+							dialogRF = param;
+							}
+							else param.style.display = "none";
+							}
+						</script>
+						<div class="regions" id="Russia" style="display:none">
+							<a href="" onclick="lookLocationRF('Russia');return false;" class="subClose mainElement"></a>
+							<h3>Выбор города России</h3>
+							<script>
+								$(function () {
+									$("input#searchRegionCity").on("input", function () {
+										var str = $(this).val().toLowerCase();
+										if (str.length <= 2) {
+											$("ul#searchRegionCity li").show();
+										} else {
+											$("ul#searchRegionCity li").each(function () {
+												if ($(this).text().toLowerCase().indexOf(str) < 0) {
+													$(this).hide();
+												}
+											});
+										}
+									});
+								});
+							</script>
+							<script>
+								var hideMessageToo;	 
+								function lookItToo(deliveryDialogAnswer)
+								{
+								param=document.getElementById(deliveryDialogAnswer);
+								if(param.style.display == "none")
+								{
+								if(hideMessageToo) hideMessageToo.style.display = "none";
+								param.style.display = "block";
+								hideMessageToo = param;
+								}
+								else param.style.display = "none";
+								}
+							</script>
+							<input id="searchRegionCity" value="" placeholder="Поиск по городам области" size="20">
+							<div class="deliveryMessage" id="deliveryDialogAnswerToRF" style="display:none">
+								<a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;" class="subClose"></a>
+								<div class="subHeader">
+									<h3>Поставки комплектующих для&nbsp;АЗС в&nbsp;регионах России</h3>
+								</div>
+								<p>При заказе комплектующих для&nbsp;ТРК и АЗС по&nbsp;будням до&nbsp;17:00 доставка в&nbsp;<span id="regionCityRF"></span> осуществляется по штатному расписанию (кроме праздников и выходных).</p>
+								<p>Вы можете выбрать удобное для&nbsp;Вас время при&nbsp;согласовании заказа с&nbsp;менеджером компании «Нева-Трейд».</p>
+								<p>Указана стоимость доставки для&nbsp;заказов весом до&nbsp;1&nbsp;кг.</p>
+								<p class="buttons">
+									<a href="/about/order/index.php" class="orderButton">Оформить заказ</a>
+									<a href="#" class="backButton">Закрыть</a>
+								</p>
+							</div>
+							<ul id="searchRegionCity">
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Архангельск</b><small>Архангельская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Астрахань</b><small>Астраханская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Барнаул</b><small>Алтайский край</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Благовещенск</b><small>Амурская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Брянск</b><small>Брянская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Великие Луки</b><small>Псковская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Великий Новгород</b><small>Новгородская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Владивосток</b><small>Приморский край</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Владимир</b><small>Владимирская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Волгоград</b><small>Волгоградская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Воронеж</b><small>Воронежская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Дзержинск</b><small>Нижегородская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Екатеринбург</b><small>Свердловская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Ижевск</b><small>Удмуртская республика</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Йошкар-Ола</b><small>Республика Марий Эл</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Казань</b><small>Республика Татарстан</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Калининград</b><small>Калининградская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Калуга</b><small>Калужская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Киров</b><small>Кировская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Кострома</b><small>Костромская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Краснодар</b><small>Краснодарский край</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Красноярск</b><small>Красноярский край</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Липецк</b><small>Липецкая область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Магнитогорск</b><small>Челябинская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Мурманск</b><small>Мурманская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Набережные Челны</b><small>Республика Татарстан</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Нижний Новгород</b><small>Нижегородская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Нижний Тагил</b><small>Свердловская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Новосибирск</b><small>Новосибирская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Омск</b><small>Омская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Орел</b><small>Орловская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Оренбург</b><small>Оренбургская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Пенза</b><small>Пензенская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Пермь</b><small>Пермский край</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Петрозаводск</b><small>Республика Карелия</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Псков</b><small>Псковская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Ростов-на-Дону</b><small>Ростовская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Рязань</b><small>Рязанская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Самара</b><small>Самарская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Саранск</b><small>Республика Мордовия</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Саратов</b><small>Саратовская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Северодвинск</b><small>Архангельская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Сочи</b><small>Краснодарский край</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Ставрополь</b><small>Ставропольский край</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Сургут</b><small>Ханты-Мансийский АО</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Сызрань</b><small>Самарская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Сыктывкар</b><small>Республика Коми</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Тамбов</b><small>Тамбоская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Тверь</b><small>Тверская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Томск</b><small>Томская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Тула</b><small>Тульская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Тюмень</b><small>Тюменская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Улан-Удэ</b><small>Республика Бурятия</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Уфа</b><small>Республика Башкортостан</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Ухта</b><small>Республика Коми</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Хабаровск</b><small>Хабаровский край</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Чебоксары</b><small>Чувашская Республика</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Челябинск</b><small>Челябинская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Череповец</b><small>Вологодская область</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Чита</b><small>Забайкальский край</small></a></li>
+								<li class="selectCityRF"><a href="#" onclick="lookItToRF('deliveryDialogAnswerToRF');return false;"><b>Ярославль</b><small>Ярославская область</small></a></li>
+							</ul>
+							<script>
+								var showToo;	 
+								function lookItToRF(deliveryDialogAnswerToRF)
+								{
+								param=document.getElementById(deliveryDialogAnswerToRF);
+								if(param.style.display == "none")
+								{
+								if(showToo) showToo.style.display = "none";
+								param.style.display = "block";
+								showToo = param;
+								}
+								else param.style.display = "none";
+								}
+							</script>
+							<script>
+								var select = document.querySelectorAll('li.selectCityRF');
+								var regionCityRF = document.getElementById("regionCityRF");
+								select[0].onclick = function() {regionCityRF.innerHTML = 'Архангельск	от 10 дней';}
+								select[1].onclick = function() {regionCityRF.innerHTML = 'Астрахань от 11 дней';}
+								select[2].onclick = function() {regionCityRF.innerHTML = 'Барнаул от 14 дней';}
+								select[3].onclick = function() {regionCityRF.innerHTML = 'Благовещенск от 15 дней';}
+								select[4].onclick = function() {regionCityRF.innerHTML = 'Брянск от 9 дней';}
+								select[5].onclick = function() {regionCityRF.innerHTML = 'Великие Луки от 9 дней';}
+								select[6].onclick = function() {regionCityRF.innerHTML = 'Великий Новгород от 9 дней';}
+								select[7].onclick = function() {regionCityRF.innerHTML = 'Владивосток от 30 дней';}
+								select[8].onclick = function() {regionCityRF.innerHTML = 'Владимир от 8 дней';}
+								select[9].onclick = function() {regionCityRF.innerHTML = 'Волгоград от 10 дней';}
+								select[10].onclick = function() {regionCityRF.innerHTML = 'Воронеж от 9 дней';}
+								select[11].onclick = function() {regionCityRF.innerHTML = 'Дзержинск от 8 дней';}
+								select[12].onclick = function() {regionCityRF.innerHTML = 'Екатеринбург от 11 дней';}
+								select[13].onclick = function() {regionCityRF.innerHTML = 'Ижевск от 10 дней';}
+								select[14].onclick = function() {regionCityRF.innerHTML = 'Йошкар-Ола от 10 дней';}
+								select[15].onclick = function() {regionCityRF.innerHTML = 'Казань от 9 дней';}
+								select[16].onclick = function() {regionCityRF.innerHTML = 'Калининград от 16 дней';}
+								select[17].onclick = function() {regionCityRF.innerHTML = 'Калуга от 8 дней';}
+								select[18].onclick = function() {regionCityRF.innerHTML = 'Киров от 10 дней';}
+								select[19].onclick = function() {regionCityRF.innerHTML = 'Кострома от 8 дней';}
+								select[20].onclick = function() {regionCityRF.innerHTML = 'Краснодар от 10 дней';}
+								select[21].onclick = function() {regionCityRF.innerHTML = 'Красноярск от 15 дней';}
+								select[22].onclick = function() {regionCityRF.innerHTML = 'Липецк от 8 дней';}
+								select[23].onclick = function() {regionCityRF.innerHTML = 'Магнитогорск от 12 дней';}
+								select[24].onclick = function() {regionCityRF.innerHTML = 'Мурманск от 10 дней';}
+								select[25].onclick = function() {regionCityRF.innerHTML = 'Набережные Челны от 10 дней';}
+								select[26].onclick = function() {regionCityRF.innerHTML = 'Нижний Новгород от 8 дней';}
+								select[27].onclick = function() {regionCityRF.innerHTML = 'Нижний Тагил от 12 дней';}
+								select[28].onclick = function() {regionCityRF.innerHTML = 'Новосибирск от 13 дней';}
+								select[29].onclick = function() {regionCityRF.innerHTML = 'Омск от 12 дней';}
+								select[30].onclick = function() {regionCityRF.innerHTML = 'Орел от 8 дней';}
+								select[31].onclick = function() {regionCityRF.innerHTML = 'Оренбург от 11 дней';}
+								select[32].onclick = function() {regionCityRF.innerHTML = 'Пенза от 9 дней';}
+								select[33].onclick = function() {regionCityRF.innerHTML = 'Пермь от 11 дней';}
+								select[34].onclick = function() {regionCityRF.innerHTML = 'Петрозаводск от 10 дней';}
+								select[35].onclick = function() {regionCityRF.innerHTML = 'Псков от 10 дней';}
+								select[36].onclick = function() {regionCityRF.innerHTML = 'Ростов-на-Дону от 10 дней';}
+								select[37].onclick = function() {regionCityRF.innerHTML = 'Рязань от 8 дней';}
+								select[38].onclick = function() {regionCityRF.innerHTML = 'Самара от 10 дней';}
+								select[39].onclick = function() {regionCityRF.innerHTML = 'Саранск от 10 дней';}
+								select[40].onclick = function() {regionCityRF.innerHTML = 'Саратов от 9 дней';}
+								select[41].onclick = function() {regionCityRF.innerHTML = 'Северодвинск от 12 дней';}
+								select[42].onclick = function() {regionCityRF.innerHTML = 'Сочи от 11 дней';}
+								select[43].onclick = function() {regionCityRF.innerHTML = 'Ставрополь от 10 дней';}
+								select[44].onclick = function() {regionCityRF.innerHTML = 'Сургут от 13 дней';}
+								select[45].onclick = function() {regionCityRF.innerHTML = 'Сызрань от 10 дней';}
+								select[46].onclick = function() {regionCityRF.innerHTML = 'Сыктывкар от 11 дней';}
+								select[47].onclick = function() {regionCityRF.innerHTML = 'Тамбов от 8 дней';}
+								select[48].onclick = function() {regionCityRF.innerHTML = 'Тверь от 8 дней';}
+								select[49].onclick = function() {regionCityRF.innerHTML = 'Томск от 14 дней';}
+								select[50].onclick = function() {regionCityRF.innerHTML = 'Тула от 8 дней';}
+								select[51].onclick = function() {regionCityRF.innerHTML = 'Тюмень от 12 дней';}
+								select[52].onclick = function() {regionCityRF.innerHTML = 'Улан-Удэ от 18 дней';}
+								select[53].onclick = function() {regionCityRF.innerHTML = 'Уфа от 11 дней';}
+								select[54].onclick = function() {regionCityRF.innerHTML = 'Ухта от 12 дней';}
+								select[55].onclick = function() {regionCityRF.innerHTML = 'Хабаровск от 19 дней';}
+								select[56].onclick = function() {regionCityRF.innerHTML = 'Чебоксары от 9 дней';}
+								select[57].onclick = function() {regionCityRF.innerHTML = 'Челябинск от 11 дней';}
+								select[58].onclick = function() {regionCityRF.innerHTML = 'Череповец от 9 дней';}
+								select[59].onclick = function() {regionCityRF.innerHTML = 'Чита от 18 дней';}
+								select[60].onclick = function() {regionCityRF.innerHTML = 'Ярославль от 8 дней';}
+							</script>
+							<p class="info">Ориентировочные сроки поставок комплектующих в регионы РФ.</p>
+					</div>
+					<div class="mapPreview">
+						<div class="mapBox">
+							<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Af71d60d7ba7973cceff2d9af5c5c511c0da619012551016021764a094a6be40f&amp;width=100%25&amp;height=100%&amp;lang=ru_RU&amp;scroll=true"></script>
+						</div>
+						<a href="https://yandex.ru/maps/?um=constructor%3Af71d60d7ba7973cceff2d9af5c5c511c0da619012551016021764a094a6be40f&amp;source=constructorLink" target="_blank" title="Увеличить карту для детального просмотра" class="viewFullMap"><span class="enlargeMap">Увеличить карту</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Окно "Доставка в регионы России" -->
+		
+	</body>
+</html>
